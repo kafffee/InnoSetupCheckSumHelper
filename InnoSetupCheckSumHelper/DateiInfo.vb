@@ -2,11 +2,12 @@
 
 Public Class DateiInfo
 
-    Public DateiPfad As String
+    Public SourceDateiPfad As String
     Public CheckSumme As String
+    Public RelativesDateiVerzeichnis As String
 
-    Public Sub New(argDateiPfad As String, argCheckSumme As String)
-        DateiPfad = argDateiPfad
+    Public Sub New(argSourceDateiPfad As String, argCheckSumme As String)
+        SourceDateiPfad = argSourceDateiPfad
         CheckSumme = argCheckSumme
     End Sub
 
