@@ -72,12 +72,7 @@ Class MainWindow
         For i = 0 To AlleDateiInfos.Count - 1
 
             If AlleDateiInfos(i).SourceDateiPfad.Contains(AppPath) Then
-                'Dim RelativerPfad As String = "{app}" & AlleDateiInfos(i).DateiPfad.Substring(AppPath.Length)
-                'If i <> 0 Then
-                'AlleDateiInfos(i).DateiPfad = AlleDateiInfos(i).DateiPfad.Substring(AppPath.Length)
-                'Else
                 AlleDateiInfos(i).RelativesDateiVerzeichnis = "{app}" & AlleDateiInfos(i).SourceDateiPfad.Substring(AppPath.Length)
-                'End If
             End If
         Next
 
@@ -86,10 +81,6 @@ Class MainWindow
         Next
 
         txtISS.Text = Skript & FilesCode & AddeCode()
-
-        'brdDragDrop.Background = New SolidColorBrush(System.Windows.Media.Colors.Green)
-        'Threading.Thread.Sleep(2500)
-        'brdDragDrop.Background = New SolidColorBrush(System.Windows.Media.Colors.Red)
     End Sub
 
     Private Function GetHashFromFile(argDateiPfad As String) As String
@@ -137,13 +128,11 @@ Class MainWindow
         Code += "  begin" & NL
         Code += "    ZielDateiPfad := ExpandConstant('{app}') + copy(CurrentFilename, 6, Length(CurrentFilename)-5);" & NL
         Code += "    if GetSHA1OfFile(ZielDateiPfad) = argChecksum then" & NL
-        'Code += "      result := true" & NL
         Code += "    else" & NL
         Code += "      begin" & NL
         Code += "        MsgBox('Eine Installationsdatei (' + ZielDateiPfad + ') ist beschädigt. Bitte starte die Anwendung nicht und versuche stattdessen, den Installer erneut herunterzuladen und zu starten. Falls das Problem besteht, kontaktiere bitte den Entwickler.', mbError, MB_OK);" & NL
         Code += "        CancelWithoutPrompt:=True;" & NL
         Code += "        WizardForm.Close;" & NL
-        'Code += "        result := false" & NL
         Code += "      end;" & NL
         Code += "  end;"
 
