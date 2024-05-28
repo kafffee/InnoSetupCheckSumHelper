@@ -1,7 +1,6 @@
 ﻿Option Strict On
 Imports System.IO
 Imports System.Security.Cryptography
-Imports Microsoft.Win32
 
 Class MainWindow
 
