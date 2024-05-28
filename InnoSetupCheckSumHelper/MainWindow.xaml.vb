@@ -8,7 +8,6 @@ Class MainWindow
     Private NL As String = Environment.NewLine
     Private AnfZ As String = """"
     Private AlleDateiInfos As New List(Of DateiInfo)
-    Private UnterVerzeichnisse As New List(Of String)
     Private FilesCode As String = ""
     Private AppPath As String = ""
     Public Function DragDrop(sender As Object, e As DragEventArgs) As List(Of String)
@@ -23,7 +22,6 @@ Class MainWindow
 
                 If Directory.Exists(Eintrag) Then
                     DateienListe.AddRange(From Datei In New System.IO.DirectoryInfo(Eintrag).GetFiles("*.*", IO.SearchOption.AllDirectories) Where Not String.IsNullOrEmpty(Datei.Extension) Select Datei.FullName)
-                    UnterVerzeichnisse.AddRange(Directory.GetDirectories(Eintrag, "*", SearchOption.AllDirectories).ToList)
                 Else
                     If Not String.IsNullOrEmpty(DateiInfo.Extension) Then
                         DateienListe.Add(Eintrag)
